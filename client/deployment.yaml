@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transparent-client
+  labels:
+    app: transparent-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: transparent-client
+  template:
+    metadata:
+      labels:
+        app: transparent-client
+    spec:
+      containers:
+      - name: transparent-client
+        image: transparent-demo-client:0.0.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80

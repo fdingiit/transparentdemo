@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transparent-demo-http-server
+  labels:
+    app: transparent-demo-http-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: transparent-demo-http-server
+  template:
+    metadata:
+      labels:
+        app: transparent-demo-http-server
+    spec:
+      containers:
+      - name: transparent-demo-http-server
+        image: transparent-demo-http-server:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
